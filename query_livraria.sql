@@ -176,7 +176,15 @@ nota_biografica, id_pais) values
 #Mostrar o nome do autor e o nome do pais id e o nome do pais
 select * from autor;
 select * from pais;
-select a.id_autor;
+
+select a.id_autor, 
+	   a.nome_de_nascimento, 
+       p.id_pais,  
+       p.nome
+from autor a 
+inner join pais p
+using (id_pais);
+#on a.id_pais = p.id_pais;
 
 # DML - Data Manipulation Language
 # Associação de Autores e Livros
