@@ -188,33 +188,54 @@ using (id_pais);
 
 # DML - Data Manipulation Language
 # Associação de Autores e Livros
-insert into autor_escreve_livro(autor_pseudonimo, livro_codigo) 
+
+
+insert into autor_escreve_livro(id_livro, id_autor) 
 # 1 http://www.brasport.com.br/negocios/gerenciamento-de-servico-itil/agile-scrum-master-no-gerenciamento-avancado-de-projetos-2a-edicao/
-values ("Massari",1);
+values (1,1);
 
 # 2 http://www.brasport.com.br/informatica-e-tecnologia/seguranca/fundamentos-de-seguranca-da-informacao/
-insert into autor_escreve_livro(autor_pseudonimo, livro_codigo)
-values ("Baars",2),("J. Hintzbergen",2),
-("K. Hintzbergen",2),("Smulders",2);
+insert into autor_escreve_livro(id_livro, id_autor)
+values (2,2),(4,2),
+	   (3,2),(5,2);
 
 # 3 https://novatec.com.br/livros/agile-para-todos/
-insert into autor_escreve_livro(autor_pseudonimo, livro_codigo)
-values ("Lemay",3);
-
+insert into autor_escreve_livro(id_livro, id_autor)
+values (6,3);
 # 4 https://novatec.com.br/livros/amazon-web-services-acao/
-insert into autor_escreve_livro(autor_pseudonimo, livro_codigo)
-values ("M. Wittig",4);
-insert into autor_escreve_livro(autor_pseudonimo, livro_codigo)
-values ("A. Wittig",4);
+insert into autor_escreve_livro(id_autor, id_livro)
+values (7,4);
+
+insert into autor_escreve_livro(id_autor, id_livro)
+values (8,4);
 
 # 5 https://www.editoraerica.com.br/php-5---conceitos-programacao-e-integracao-com-banco-de-dados/p
-insert into autor_escreve_livro(autor_pseudonimo, livro_codigo)
-values ("Walace",5);
+insert into autor_escreve_livro(id_autor, id_livro)
+values (9,5);
 
 # 6 https://www.editoraerica.com.br/cloud-computing---inteligencia-da-nuvem-e-seu-novo-valor-em-ti/p
-insert into autor_escreve_livro(autor_pseudonimo, livro_codigo)
-values ("Molinari",6);
+insert into autor_escreve_livro(id_autor, id_livro)
+values (10,6);
 
+#Desafio 
+#mostrar o nome do autor, o nome do pais do autor, o titulo e o numero de paginas
+	select 
+		a.pseudonimo as Pseudônimo,
+		p.nome as País,
+		l.titulo as Livro,
+		i.nome as Idioma
+		from autor_escreve_livro
+		inner join autor a using(id_autor)
+		inner join pais p using(id_pais)
+        inner join livro l using(id_livro)
+        inner join idioma i using(id_idioma)
+        order by a.pseudonimo;
+        
+select * from idioma;
+select * from livro;
+select * from pais;
+select * from autor;
+select * from autor_escreve_livro;
 
 # Cadastro de edições
 # DML - Data Manipulation Language
